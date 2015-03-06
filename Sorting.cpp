@@ -28,7 +28,28 @@ void bubblesort(vector<int> unsorted_array){ // Changed the value for other sort
 		cout<<" "<<*j;
 
 }
-void selectionsort(){
+void selectionsort(vector<int> unsorted_array){
+	//In Place
+	int minimum , position;
+	for(int i=0;i<unsorted_array.size()-1;i++){
+		minimum = unsorted_array[i];
+		position = i;				// Nice Check
+		for (int j = i+1; j < unsorted_array.size(); j++)
+		{
+			if(unsorted_array[j] < minimum){
+				minimum = unsorted_array[j];
+				position = j;
+			}
+		}
+		swap(unsorted_array[i],unsorted_array[position]);
+	}
+
+	cout<<"\n Selection Sort - Sorted Array \n";
+
+	for(auto j=unsorted_array.begin();j<unsorted_array.end();j++)
+		cout<<" "<<*j;
+
+	// Change Random Function,  Contant repetative values
 	
 }
 void insertionsort(vector<int> unsorted_array){
@@ -87,6 +108,9 @@ int main(){
 	cout<<"\n";
 
 	insertionsort(unsorted_array);
+	cout<<"\n";
+
+	selectionsort(unsorted_array);
 	cout<<"\n";
 
 	return 0;
