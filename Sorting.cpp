@@ -11,8 +11,10 @@ void swap (int& a, int& b){
 	b=temp;
 }
 
-void bubblesort(vector<int>& unsorted_array){
+void bubblesort(vector<int> unsorted_array){ // Changed the value for other sorts, so pass by value, not reference
 	//Swap two elements, Do it n times
+	//Yet to reduce time using the property ***
+
 	for(int i=0;i< unsorted_array.size() - 1;i++){
 		for(int j=0; j<unsorted_array.size()-1;j++){
 			if(unsorted_array[j] > unsorted_array[j+1])			//Increasing Order Swap
@@ -29,8 +31,28 @@ void bubblesort(vector<int>& unsorted_array){
 void selectionsort(){
 	
 }
-void insertionsort(){
-	
+void insertionsort(vector<int> unsorted_array){
+	// Try in plavce after this
+	vector<int> sorted_array;
+
+	sorted_array.push_back(unsorted_array[0]); // First Element will be sorted, coz it's the only element
+
+	for (int i = 1; i < unsorted_array.size(); i++)
+	{
+		sorted_array.push_back(unsorted_array[i]);
+		for (int j =sorted_array.size() - 1 ; j>0 ; j--)
+		{
+			if(sorted_array[j]<sorted_array[j-1])
+				swap(sorted_array[j],sorted_array[j-1]);
+		}
+	}
+	cout<<"\n Insertion Sort - Sorted Array \n";
+
+	for(auto j=sorted_array.begin();j<sorted_array.end();j++)
+		cout<<" "<<*j;
+
+	//Copy all elements to original array
+
 }
 void mergesort(){
 	
@@ -62,6 +84,9 @@ int main(){
 		cout<<" "<<*j;
 
 	bubblesort(unsorted_array);
+	cout<<"\n";
+
+	insertionsort(unsorted_array);
 	cout<<"\n";
 
 	return 0;
